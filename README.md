@@ -19,31 +19,42 @@ reports. For example:
 kcov --exclude-pattern=/.cargo,/usr/lib --verify target/cov target/debug/<PROJECT-NAME>-<hash>
 ```
 
-`<PROJECT-NAME>` and `<hash>` are the appropriate project name and hash for 
+`<PROJECT-NAME>` and `<hash>` are the appropriate project name and hash for
 your executable.
 
-Cargo typically generates two different executables: one for 
+Cargo typically generates two different executables: one for
 unit tests and one for doctests. If you are building your code
 differently or without cargo, change the last two arguments
 to kcov to respectively represent where you want the coverage to
 be stored and which executable to run.
 
-Attempting to run `kcov` with an executable argument ending in a wildcard 
-like `<PROJECT-NAME>-*` may result in incorrect coverage results as only a 
-single test executable will run. **For best results, run the kcov command 
-for each test executable and store the results in separate directories.** 
-Codecov will automatically find and upload the cobertura.xml files and 
+Attempting to run `kcov` with an executable argument ending in a wildcard
+like `<PROJECT-NAME>-*` may result in incorrect coverage results as only a
+single test executable will run. **For best results, run the kcov command
+for each test executable and store the results in separate directories.**
+Codecov will automatically find and upload the cobertura.xml files and
 merge the coverage for you.
 
-After you've run the tests and created a cobertura.xml report, you can use [the
-Codecov global uploader][4] to push that report to Codecov. See below for
-further details.
+After you've run the tests and created a cobertura.xml report, you can
+use [the Codecov global uploader][4] to push that report to Codecov.
+See below for further details.
+
+Installing `kcov` is largely dependent on your operating system. It is
+demonstrated to work on Linux systems but may not be fully compatible with
+Windows or OS X. Please lookup the appropriate installation instructions.
+The Travis CI example below demonstrates installing `kcov` on a Linux
+computer.
+
+The version of `kcov` that is distributed with your package manager may not
+work with Rust binaries. You usually need to manually build the latest
+master branch and run kcov from there. All of this is taken care of for you
+in the `.travis.yml` file below.
 
 ## [![travis-org](https://avatars2.githubusercontent.com/u/639823?v=2&s=50)](https://travis-ci.org) Travis CI
 
 ### Public Repos
 
-Adjust the following example `.travis.yml` file to test with the versions 
+Adjust the following example `.travis.yml` file to test with the versions
 of Rust you desire.
 
 ```yml
