@@ -22,8 +22,8 @@ kcov --exclude-pattern=/.cargo,/usr/lib --verify target/cov target/debug/<PROJEC
 `<PROJECT-NAME>` and `<hash>` are the appropriate project name and hash for
 your executable.
 
-Cargo typically generates two different executables: one for
-unit tests and one for doctests. If you are building your code
+The hash at the end may change if cargo generates different test
+executables with the same name. If you are building your code
 differently or without cargo, change the last two arguments
 to kcov to respectively represent where you want the coverage to
 be stored and which executable to run.
