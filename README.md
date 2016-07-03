@@ -10,7 +10,7 @@ Note that the coverage is deliberately incomplete. That
 way you can [follow the badge link][5] and see how [Codecov][1]
 works. You can view the code there, see hits and misses for coverage, etc.
 
-**As of July 2, 2016, there is [no option to make rustdoc generate a runnable test executable][rustdoc-executable]. That means that documentation tests will not show in your coverage data. If you discover a way to run the doctest executable with kcov, please open an [Issue][issues] and we will add that to these instructions.**
+**As of July 2, 2016, there is [no option to make rustdoc generate a runnable test executable][7]. That means that documentation tests will not show in your coverage data. If you discover a way to run the doctest executable with kcov, please open an [Issue][8] and we will add that to these instructions.**
 
 ## Basic Usage
 
@@ -132,6 +132,6 @@ learn more about the script.
 [4]: https://github.com/codecov/codecov-bash
 [5]: http://codecov.io/github/codecov/example-rust?branch=master
 [6]: https://simonkagstrom.github.io/kcov/
-[rustdoc-executable][http://stackoverflow.com/questions/35547710/does-rustdoc-generate-runnable-binaries]
-[issues]: https://github.com/codecov/example-rust/issues
+[7]: http://stackoverflow.com/questions/35547710/does-rustdoc-generate-runnable-binaries
+[8]: https://github.com/codecov/example-rust/issues
 
