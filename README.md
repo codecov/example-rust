@@ -64,6 +64,12 @@ language: rust
 
 rust:
   - stable
+  - beta
+  - nightly
+
+matrix:
+  allow_failures:
+    - rust: nightly
 
 before_install:
   - sudo apt-get update
@@ -90,7 +96,6 @@ after_success: |
   cd ../.. &&
   rm -rf kcov-master &&
   for file in target/debug/<PROJECT-NAME>-*[^\.d]; do mkdir -p "target/cov/$(basename $file)"; kcov --exclude-pattern=/.cargo,/usr/lib --verify "target/cov/$(basename $file)" "$file"; done &&
-
   bash <(curl -s https://codecov.io/bash) &&
   echo "Uploaded code coverage"
 ```
