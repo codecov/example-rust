@@ -136,4 +136,3 @@ learn more about the script.
 [6]: https://simonkagstrom.github.io/kcov/
 [7]: http://stackoverflow.com/questions/35547710/does-rustdoc-generate-runnable-binaries
 [8]: https://github.com/codecov/example-rust/issues
-
