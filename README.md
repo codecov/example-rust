@@ -61,8 +61,15 @@ of Rust you desire.
 
 ```yml
 language: rust
+
 rust:
-  - 1.9.0
+  - stable
+  - beta
+  - nightly
+
+matrix:
+  allow_failures:
+    - rust: nightly
 
 before_install:
   - sudo apt-get update
@@ -89,7 +96,6 @@ after_success: |
   cd ../.. &&
   rm -rf kcov-master &&
   for file in target/debug/<PROJECT-NAME>-*[^\.d]; do mkdir -p "target/cov/$(basename $file)"; kcov --exclude-pattern=/.cargo,/usr/lib --verify "target/cov/$(basename $file)" "$file"; done &&
-  
   bash <(curl -s https://codecov.io/bash) &&
   echo "Uploaded code coverage"
 ```
@@ -135,4 +141,3 @@ learn more about the script.
 [6]: https://simonkagstrom.github.io/kcov/
 [7]: http://stackoverflow.com/questions/35547710/does-rustdoc-generate-runnable-binaries
 [8]: https://github.com/codecov/example-rust/issues
-
