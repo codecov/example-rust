@@ -61,8 +61,9 @@ of Rust you desire.
 
 ```yml
 language: rust
+
 rust:
-  - 1.9.0
+  - stable
 
 before_install:
   - sudo apt-get update
@@ -89,7 +90,7 @@ after_success: |
   cd ../.. &&
   rm -rf kcov-master &&
   for file in target/debug/<PROJECT-NAME>-*[^\.d]; do mkdir -p "target/cov/$(basename $file)"; kcov --exclude-pattern=/.cargo,/usr/lib --verify "target/cov/$(basename $file)" "$file"; done &&
-  
+
   bash <(curl -s https://codecov.io/bash) &&
   echo "Uploaded code coverage"
 ```
