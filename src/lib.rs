@@ -35,6 +35,14 @@ pub fn which(face: &str) -> &'static str {
     }
 }
 
+/// This function is not called in tests. It will be considered as dead code.
+/// Because of dead-code elimination it won't be reported as uncovered
+/// since the function will be removed from executable
+pub fn not_called() {
+    println!("This is dead code");
+    unreachable!();
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
