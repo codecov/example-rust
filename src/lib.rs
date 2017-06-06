@@ -35,9 +35,11 @@ pub fn which(face: &str) -> &'static str {
     }
 }
 
-/// This function is not called in tests. It will be considered as dead code.
-/// Because of dead-code elimination it won't be reported as uncovered
-/// since the function will be removed from executable
+/// This function is not called during tests thus it will be considered as dead code.
+/// By default, and because of dead-code elimination it won't be reported as uncovered
+/// since the function will be removed from executable. Hopefully you can pass
+/// the rustflag `-C link-dead-code` when building the tests in order to
+/// prevent dead-code elimination
 pub fn not_called() {
     println!("This is dead code");
     unreachable!();

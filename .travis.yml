@@ -9,6 +9,10 @@ matrix:
   allow_failures:
     - rust: nightly
 
+env:
+  global:
+  - RUSTFLAGS="-C link-dead-code"
+
 before_install:
   - sudo apt-get update
 
