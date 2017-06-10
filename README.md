@@ -37,6 +37,11 @@ for each test executable and store the results in separate directories.**
 Codecov will automatically find and upload the cobertura.xml files and
 merge the coverage for you.
 
+Note that setting the environment variable `RUSTFLAGS="-C link-dead-code"`
+during tests build may improve coverage accuracy by preventing dead-code elimination.
+Do not set this variable when creating release builds since it will increase
+binary size.
+
 After you've run the tests and created a cobertura.xml report, you can
 use [the Codecov global uploader][4] to push that report to Codecov.
 See below for further details.
@@ -70,6 +75,10 @@ rust:
 matrix:
   allow_failures:
     - rust: nightly
+
+env:
+  global:
+  - RUSTFLAGS="-C link-dead-code"
 
 before_install:
   - sudo apt-get update
