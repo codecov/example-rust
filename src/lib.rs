@@ -35,11 +35,12 @@ pub fn which(face: &str) -> &'static str {
     }
 }
 
-/// This function is not called during tests thus it will be considered as dead code.
+/// This function is not called during tests, so it will be considered dead code.
 /// By default, and because of dead-code elimination it won't be reported as uncovered
-/// since the function will be removed from executable. Hopefully you can pass
-/// the rustflag `-C link-dead-code` when building the tests in order to
-/// prevent dead-code elimination
+/// since the function will be removed from executable.
+/// This is accounted for in the Travis configuration by passing the compiler flag
+/// `-C link-dead-code` when building the tests. This flag disables dead code
+/// elimination and allows this function to be reported correctly.
 pub fn not_called() {
     println!("This is dead code");
     unreachable!();

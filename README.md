@@ -39,7 +39,7 @@ merge the coverage for you.
 
 Note that setting the environment variable `RUSTFLAGS="-C link-dead-code"`
 during tests build may improve coverage accuracy by preventing dead-code elimination.
-This variable should not be set when building releases since it will increase
+Do not set this variable when creating release builds since it will increase
 binary size.
 
 After you've run the tests and created a cobertura.xml report, you can
