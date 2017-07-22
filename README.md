@@ -67,6 +67,8 @@ of Rust you desire.
 ```yml
 language: rust
 
+sudo: false
+
 rust:
   - stable
   - beta
@@ -79,9 +81,6 @@ matrix:
 env:
   global:
   - RUSTFLAGS="-C link-dead-code"
-
-before_install:
-  - sudo apt-get update
 
 addons:
   apt:
@@ -101,10 +100,10 @@ after_success: |
   cd build &&
   cmake .. &&
   make &&
-  sudo make install &&
+  make install DESTDIR=../../kcov-build &&
   cd ../.. &&
   rm -rf kcov-master &&
-  for file in target/debug/<PROJECT-NAME>-*[^\.d]; do mkdir -p "target/cov/$(basename $file)"; kcov --exclude-pattern=/.cargo,/usr/lib --verify "target/cov/$(basename $file)" "$file"; done &&
+  for file in target/debug/examplerust-*[^\.d]; do mkdir -p "target/cov/$(basename $file)"; ./kcov-build/usr/local/bin/kcov --exclude-pattern=/.cargo,/usr/lib --verify "target/cov/$(basename $file)" "$file"; done &&
   bash <(curl -s https://codecov.io/bash) &&
   echo "Uploaded code coverage"
 ```
