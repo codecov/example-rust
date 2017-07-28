@@ -91,6 +91,7 @@ addons:
       - cmake
       - gcc
       - binutils-dev
+      - libiberty-dev
 
 after_success: |
   wget https://github.com/SimonKagstrom/kcov/archive/master.tar.gz &&
