@@ -100,7 +100,7 @@ Add to your `.travis.yml` file.
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t uuid-repo-token
 ```
-### as `kcov` Version
+### `kcov` Version
 
 The version of `kcov` that is distributed with your package manager may not
 work with Rust binaries. You usually need to manually build the latest
