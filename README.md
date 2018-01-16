@@ -53,6 +53,12 @@ after_success: |
 This will automatically run each executable and store the results in a
 different directory. Codecov will automatically find the `cobertura.xml`
 files that `kcov` generates and combine the results.
+
+#### Other CI services
+- Adjust the materials in the above example as necessary for your CI.
+- Add CODECOV_TOKEN=<your repo token> to your CI's environment variables. (Don't store the raw token in your repo.)
+- Run bash <(curl -s https://codecov.io/bash) after tests complete.
+
 ### Produce Coverage Reports
 
 Run your tests with [kcov][6] in order to create the necessary coverage
