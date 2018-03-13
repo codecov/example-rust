@@ -9,7 +9,7 @@ Add to your `.travis.yml` file.
 ```yml
 language: rust
 
-sudo: false
+sudo: required
 
 rust:
   - stable
