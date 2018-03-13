@@ -20,10 +20,6 @@ matrix:
   allow_failures:
     - rust: nightly
 
-env:
-  global:
-  - RUSTFLAGS="-C link-dead-code"
-
 addons:
   apt:
     packages:
