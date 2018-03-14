@@ -9,7 +9,7 @@ Add to your `.travis.yml` file.
 ```yml
 language: rust
 
-sudo: false
+sudo: required
 
 rust:
   - stable
@@ -19,10 +19,6 @@ rust:
 matrix:
   allow_failures:
     - rust: nightly
-
-env:
-  global:
-  - RUSTFLAGS="-C link-dead-code"
 
 addons:
   apt:
