@@ -1,4 +1,4 @@
-const EYES: &'static str = ":";
+const EYES: &str = ":";
 
 pub fn smile() -> String {
     format!("{}{}", EYES, ")")
@@ -23,14 +23,11 @@ pub fn angry() -> String {
 pub fn which(face: &str) -> &'static str {
     if face == smile() {
         "Smile"
-    }
-    else if face == frown() {
+    } else if face == frown() {
         "Frown"
-    }
-    else if face == angry() {
+    } else if face == angry() {
         "Angry"
-    }
-    else {
+    } else {
         "I don't know"
     }
 }
@@ -70,4 +67,3 @@ mod tests {
         assert_eq!(which(&smile()), "Smile");
     }
 }
-
