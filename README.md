@@ -6,6 +6,8 @@
 ### Travis Setup
 
 Add to your `.travis.yml` file.
+
+**NOTE: You should change `examplerust` in `for file in target/debug/examplerust-* ...` (under `after_success`) to match your package name.** For example, if your package name is `minigrep`, then the lines should be changed to `for file in target/debug/minigrep-* ...`. If you are not sure what your package name, it can also be found in `Cargo.toml` and it is usually the same name as when you had initialised the project.
 ```yml
 language: rust
 
