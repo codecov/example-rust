@@ -1,4 +1,6 @@
 # [Codecov][1] Rust Example
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcodecov%2Fexample-rust.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcodecov%2Fexample-rust?ref=badge_shield)
+
 
 **As of July 2, 2016, there is [no option to make rustdoc generate a runnable test executable][7]. That means that documentation tests will not show in your coverage data. If you discover a way to run the doctest executable with kcov, please open an [Issue][8] and we will add that to these instructions.**
 
@@ -121,3 +123,7 @@ We are happy to help if you have any questions. Please contact email our Support
 [6]: https://simonkagstrom.github.io/kcov/
 [7]: http://stackoverflow.com/questions/35547710/does-rustdoc-generate-runnable-binaries
 [8]: https://github.com/codecov/example-rust/issues
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcodecov%2Fexample-rust.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcodecov%2Fexample-rust?ref=badge_large)
