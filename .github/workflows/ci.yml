@@ -1,0 +1,47 @@
+name: CI
+on:
+  push:
+    branches: master
+  pull_request:
+
+jobs:
+  test:
+    name: Testing
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: nightly
+          profile: minimal
+          override: true
+
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y cmake make gcc protobuf-compiler libzmq3-dev
+      - name: Run tests
+        uses: actions-rs/cargo@v1
+        with:
+          command: test
+        env:
+          CARGO_INCREMENTAL: '0'
+          RUSTFLAGS: '-Zprofile -Ccodegen-units=1 -Cinline-threshold=0 -Clink-dead-code -Coverflow-checks=off -Cpanic=abort -Zpanic_abort_tests'
+          RUSTDOCFLAGS: '-Zprofile -Ccodegen-units=1 -Cinline-threshold=0 -Clink-dead-code -Coverflow-checks=off -Cpanic=abort -Zpanic_abort_tests'
+
+      - id: coverage
+        uses: actions-rs/grcov@v0.1
+        with:
+          config: .grcov.yml
+
+      - name: DEBUG
+        run: |
+            echo "******* DEBUG *****"
+            cat lcov.info
+            echo "******* END DEBUG ****"
+
+      - uses: codecov/codecov-action@v2
+        with:
+          files: ${{ steps.coverage.outputs.report }}
+          fail_ci_if_error: true
+          verbose: true
