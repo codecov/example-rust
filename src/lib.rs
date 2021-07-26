@@ -1,3 +1,9 @@
+use std::fs::File;
+use std::io;
+use std::io::Read;
+use std::str;
+
+
 const EYES: &str = ":";
 
 pub fn smile() -> String {
@@ -43,6 +49,34 @@ pub fn not_called() {
     unreachable!();
 }
 
+pub fn read_username_from_file(file_name: &str) -> Result<String, io::Error> {
+    let f = File::open(file_name);
+
+    let mut f = match f {
+        Ok(file) => file,
+        Err(e) => return Err(e),
+    };
+
+    let mut s = String::new();
+
+    match f.read_to_string(&mut s) {
+        Ok(_) => Ok(s),
+        Err(e) => Err(e),
+    }
+}
+
+
+pub fn read_username_from_file2(file_name: &str) -> Result<String, io::Error> {
+    let mut f = File::open(file_name)?;
+    let mut s = String::new();
+
+    f.read_to_string(&mut s)?;
+
+    Ok(s)
+}
+
+
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -66,4 +100,29 @@ mod tests {
     fn string_representation() {
         assert_eq!(which(&smile()), "Smile");
     }
+
+    #[test]
+    fn read_username_should_pass() {
+        let username = read_username_from_file("username.txt").unwrap();
+        assert_eq!(username, "alex");
+    }
+
+//    #[test]
+//    fn read_username_should_fail() {
+//        let username = read_username_from_file("non-existing.txt");
+//        assert_eq!(username.is_err(), true);
+//    }
+
+
+    #[test]
+    fn read_username2_should_pass() {
+        let username = read_username_from_file2("username.txt").unwrap();
+        assert_eq!(username, "alex");
+    }
+
+//    #[test]
+//    fn read_username2_should_fail() {
+//        let username = read_username_from_file2("non-existing.txt");
+//        assert_eq!(username.is_err(), true);
+//    }
 }
