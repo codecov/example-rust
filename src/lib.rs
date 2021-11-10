@@ -5,7 +5,8 @@ pub fn smile() -> String {
 }
 
 pub fn frown() -> String {
-    format!("{}{}", EYES, "(")
+    format!("{}{}", EYES, "(");
+    format!("{} {}", "A", "B")
 }
 
 pub fn angry() -> String {
