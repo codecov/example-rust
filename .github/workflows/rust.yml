@@ -19,7 +19,7 @@ jobs:
     - uses: actions-rs/toolchain@v1
       with:
         toolchain: nightly
-        override: true    
+        override: true
     - name: Build
       run: cargo build --verbose
     - name: Run tests
@@ -31,11 +31,11 @@ jobs:
     - name: rust-grcov
       # You may pin to the exact commit or the version.
       # uses: actions-rs/grcov@bb47b1ed7883a1502fa6875d562727ace2511248
-      uses: actions-rs/grcov@v0.1.6
+      uses: actions-rs/grcov@v1
     - name: Codecov
       # You may pin to the exact commit or the version.
       # uses: codecov/codecov-action@81cd2dc8148241f03f5839d295e000b8f761e378
-      uses: codecov/codecov-action@v3.1.4
+      uses: codecov/codecov-action@v3
       with:
         # Repository upload token - get it from codecov.io. Required only for private repositories
         # token: # optional
