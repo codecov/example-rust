@@ -122,7 +122,6 @@ We are happy to help if you have any questions. Please contact email our Support
 [5]: http://codecov.io/github/codecov/example-rust?branch=master
 [6]: https://simonkagstrom.github.io/kcov/
 [7]: http://stackoverflow.com/questions/35547710/does-rustdoc-generate-runnable-binaries
-[8]: https://github.com/codecov/example-rust/issues
 
 
 ## License
